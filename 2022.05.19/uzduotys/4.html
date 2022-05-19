@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ketvirta uzduotis</title>
+</head>
+
+<style>
+    div.a {
+
+        background-color:red;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    
+}
+</style>
+
+<body>
+    <div class="a">Ketvirta uzduotis</div>
+    <script>
+        //const style = document.createElement('a');
+
+        $(document).ready(function(){
+        animateDiv('.a');
+  
+    });
+
+    function makeNewPosition(){
+    
+    
+        let h = $(window).height() - 50;
+        let w = $(window).width() - 50;
+    
+        let nh = Math.floor(Math.random() * h);
+        let nw = Math.floor(Math.random() * w);
+    
+        return [nh,nw];    
+    
+    }
+
+    function animateDiv(myclass){
+        let newq = makeNewPosition();
+        $(myclass).animate({ top: newq[0], left: newq[1] }, 1000,   function(){
+         animateDiv(myclass);        
+        });
+    
+    };
+        /*style.innerHTML = `
+        .div {
+            background-color: red;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        `;*/
+//document.head.appendChild(style);
+ 
+    </script>
+
+
+
+</body>
+</html>
